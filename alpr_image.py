@@ -66,12 +66,14 @@ def rotate_and_split_license_plate(image):
 
             print("FOUND LINES.")
             print("rotate angle:", rotation_angle)
-        # plt.figure(figsize=(12, 8))
-        # plt.subplot(1, 2, 1), plt.imshow(edges_image, cmap='gray')
-        # plt.title('Canny Edges'), plt.xticks([]), plt.yticks([])
-        # plt.subplot(1, 2, 2), plt.imshow(image, cmap='gray')
-        # plt.title('HoughLines Transform'), plt.xticks([]), plt.yticks([])
-        # plt.show()
+        else:
+            # plt.figure(figsize=(12, 8))
+            # plt.subplot(1, 2, 1), plt.imshow(edges_image, cmap='gray')
+            # plt.title('Canny Edges'), plt.xticks([]), plt.yticks([])
+            # plt.subplot(1, 2, 2), plt.imshow(image, cmap='gray')
+            # plt.title('HoughLines Transform'), plt.xticks([]), plt.yticks([])
+            # plt.show()
+            return None, None
 
         # Tính toán điểm chia ảnh thành hai phần trên và dưới
         split_point = height // 2
@@ -102,15 +104,16 @@ def id_to_label(id):
 
 if __name__ == "__main__":
 
-    image_dir = "D:/ALPR_Collections/Data/CarTGMT"
-    results_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/results_ALPR"
+    # change to your directory
+    image_dir = "./images"
+    results_dir = "./results/results_ALPR"
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     threshold_plate = 0.8
     threshold_ocr = 0.75
 
-    model_LP_detect = torch.load("LP_model_30e.pth")
-    model_OCR = torch.load("LP_OCR_model_30e.pth")
+    model_LP_detect = torch.load("LP_model_9616images_100e.pth")
+    model_OCR = torch.load("LP_OCR_model_60e.pth")
     model_LP_detect.eval()
     model_OCR.eval()
 
@@ -162,7 +165,7 @@ if __name__ == "__main__":
                     cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
                     cv2.putText(image, f'Score: {score:.4f}', (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9,
                                 (0, 255, 0), 2)
-                    break  # Kết thúc vòng lặp để chỉ lấy 1 biển số duy nhất
+                    # break  # Kết thúc vòng lặp để chỉ lấy 1 biển số duy nhất
 
 
             # Predict Characters

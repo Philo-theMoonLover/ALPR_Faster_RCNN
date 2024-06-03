@@ -84,10 +84,10 @@ def rotate_and_split_license_plate(image):
 
 if __name__ == "__main__":
 
-    # Images directory
-    image_dir = "D:/ALPR_Collections/Data/Plate_Dataset/Dataset/test"
-    results_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/results_Plate"
-    crop_plates_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/crop_plates"
+    # change to your directory
+    image_dir = "./images"
+    results_dir = "./results/results_Plate"
+    crop_plates_dir = "./results/crop_plates"
 
     # Load model
     model = torch.load("LP_model_9616images_100e.pth")

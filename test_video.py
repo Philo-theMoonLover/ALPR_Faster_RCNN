@@ -7,15 +7,15 @@ import torchvision
 from torchvision import transforms
 
 
+# change to your directory
+vid_dir = "path/to/your/test_video"
+video_name = "/test_1.mp4"
 
-vid_dir = "D:/ALPR_Collections/IMP301_Presentation2/test_video"
-video_name = "/test_4.mp4"
-
-results_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/results_video"
+results_dir = "./results/results_video"
 out_path = results_dir + video_name.replace(".mp4", ".avi")
 # crop_plates_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/crop_plates"
 
-model = torch.load("LP_model_30e.pth")
+model = torch.load("LP_model_9616images_100e.pth")
 model.eval()
 # print(model)
 device = torch.device("cuda")  # use GPU to train

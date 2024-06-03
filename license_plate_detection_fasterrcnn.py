@@ -168,7 +168,7 @@ def train_one_epoch(model, optimizer, loader, device, epoch):
 
 
 if __name__ == "__main__":
-    # License Plates.v3-original-license-plates.coco
+    # change to your directory
     dataset_path = 'D:/ALPR_Collections/Data/Plate_Dataset/Dataset'
 
     # load classes

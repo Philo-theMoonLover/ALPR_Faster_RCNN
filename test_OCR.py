@@ -20,9 +20,9 @@ def id_to_label(id):
 
 if __name__ == "__main__":
 
-    # Images directory
-    image_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/crop_plates"
-    results_dir = "D:/ALPR_Collections/ALPR_Faster_RCNN/results_OCR"
+    # Read images from crop_plates folder
+    image_dir = "./results/crop_plates"
+    results_dir = "./results/results_OCR"
     model = torch.load("LP_OCR_model_60e.pth")
     model.eval()
 
